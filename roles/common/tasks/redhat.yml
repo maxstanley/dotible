@@ -1,0 +1,22 @@
+---
+- name: Update System
+  become: true
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Install Base Packages
+  become: true
+  dnf:
+    name:
+      - "bind-utils"
+      - "curl"
+      - "wget"
+      - "gcc"
+      - "git"
+      - "make"
+      - "net-tools"
+      - "tar"
+      - "p7zip"
+      - "zip"
+    state: present

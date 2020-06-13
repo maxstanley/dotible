@@ -1,0 +1,4 @@
+---
+# Variables that apply to all host groups
+
+user_home: "{{ '~' | expanduser }}"

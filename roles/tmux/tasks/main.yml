@@ -1,0 +1,18 @@
+---
+# Installation
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+- import_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+- import_tasks: arch.yml
+  when: ansible_os_family == "Archlinux"
+
+# Distribution Tasks
+## Install tmux
+
+# Common Tasks
+- name: Copy .tmux.conf file
+  template:
+    src: tmux.conf.j2
+    dest: "{{ user_home }}/.tmux.conf"
+

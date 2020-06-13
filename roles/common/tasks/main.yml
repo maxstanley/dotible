@@ -1,0 +1,48 @@
+---
+# Installation
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+- import_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+- import_tasks: arch.yml
+  when: ansible_os_family == "Archlinux"
+
+# Distribution Tasks
+## Update System
+
+# Common Tasks
+- name: Copy .alias file
+  template:
+    src: alias.j2
+    dest: "{{ user_home }}/.alias"
+
+- name: Copy .bash_logout file
+  template:
+    src: bash_logout.j2
+    dest: "{{ user_home }}/.bash_logout"
+
+- name: Copy .bash_profile file
+  template:
+    src: bash_profile.j2
+    dest: "{{ user_home }}/.bash_profile"
+
+- name: Copy .bashrc file
+  template:
+    src: bashrc.j2
+    dest: "{{ user_home }}/.bashrc"
+
+- name: Copy .env file
+  template:
+    src: env.j2
+    dest: "{{ user_home }}/.env"
+  
+- name: Create {{ user_home }}/.scripts/ folder
+  file:
+    path: "{{ user_home }}/.scripts/"
+    state: directory
+
+- name: Copy extract.sh file
+  template:
+    src: extract.sh.j2
+    dest: "{{ user_home }}/.scripts/extract.sh"
+    mode: 0755

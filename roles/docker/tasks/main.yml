@@ -1,0 +1,18 @@
+---
+# Installation
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+- import_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+- import_tasks: arch.yml
+  when: ansible_os_family == "Archlinux"
+
+# Distribution Tasks
+## Install Docker
+
+- name: Enable docker
+  service:
+    name: docker
+    enabled: yes
+    state: started
+    

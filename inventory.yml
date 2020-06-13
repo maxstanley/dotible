@@ -1,0 +1,6 @@
+all:
+  hosts:
+    test:
+      ansible_host: xxx.xxx.xxx.xxx
+      ansible_user: user
+      ansible_sudo_pass: secret

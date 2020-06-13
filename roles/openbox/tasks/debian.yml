@@ -1,0 +1,6 @@
+---
+- name: Install openbox
+  become: true
+  apt:
+    name: openbox
+    state: present

@@ -1,0 +1,6 @@
+---
+- name: Install vim
+  become: true
+  dnf:
+    name: vim
+    state: present

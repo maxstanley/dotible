@@ -1,0 +1,39 @@
+" Do not try to be VIM compatible
+set nocompatible
+
+" Encoding
+set encoding=utf-8
+
+" Color Settings
+
+"" Enable Syntax Highlighting
+syntax enable         
+
+"" colorscheme
+set term=screen-256color
+
+" Spaces & Tabs
+
+"" Number of Visual spaces in a tab
+let tabsize = 4
+execute "set tabstop=".tabsize
+execute "set shiftwidth=".tabsize
+execute "set softtabstop=".tabsize
+set autoindent " Auto Indent New Lines
+set smartindent " Enable smart indent
+set smarttab " Enable Smart Tab
+
+" UI Config
+set number " Show Line Numbers
+set lazyredraw " Redraw only when required
+set showmatch " Highlights matching [{()}]
+set scrolloff=4 " Always show at least 4 line above/below the cursor
+
+" Searching
+set incsearch " Search the file as characters are entered
+set hlsearch " Highlight all matches when searching
+set ignorecase " Ignores case whensearching
+set smartcase " Enable Smart Case Search
+
+" Misc
+set wildmenu " Autocomplete in Menu

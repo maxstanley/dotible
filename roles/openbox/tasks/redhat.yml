@@ -1,0 +1,12 @@
+---
+- name: Install openbox
+  become: true
+  dnf:
+    name:
+      - "@base-x"
+      - "mesa-libEGL"
+      - "openbox"
+      - "xscreensaver"
+      - "dmenu"
+      - "pcmanfm"
+    state: present

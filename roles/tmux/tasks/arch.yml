@@ -1,0 +1,8 @@
+---
+- name: Install tmux
+  become: yes
+  become_user: ansible
+  aur:
+    use: yay
+    name: tmux
+    state: present

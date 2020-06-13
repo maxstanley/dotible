@@ -1,0 +1,8 @@
+---
+- name: Install docker
+  become: yes
+  become_user: ansible
+  aur:
+    use: yay
+    name: docker
+    state: present
