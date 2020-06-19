@@ -16,3 +16,72 @@
     src: vimrc.j2
     dest: "{{ user_home }}/.vimrc"
 
+- name: Create Plugins Directory
+  file:
+    path: "{{ user_home }}/.vim/pack/plugins/start"
+    state: directory
+
+# - name: Create Plugins Directory
+#   file:
+#     path: "{{ user_home }}/.vim/pack/plugins/start/commentary"
+#     state: absent
+
+# - name: kmn
+#   command: "rm -rf commentary"
+# 
+# - name: Download commentary
+#   command: "git clone https://tpope.io/vim/commentary.git"
+# 
+# - name: Move commentary
+#   command: "cp commentary/* {{ user_home }}/.vim/pack/plugins/start/commentary/"  
+
+- name: Download and Extract Intellisense
+  unarchive:
+    src: "https://github.com/neoclide/coc.nvim/archive/release.tar.gz"
+    dest: "{{ user_home }}/.vim/pack/plugins/start/"
+    remote_src: yes
+
+- name: Create Extensions Directory
+  file:
+    path: "{{ user_home }}/.config/coc/extensions/"
+    state: directory
+
+- name: Install coc.nvim Extenstions
+  template:
+    src: package.json.j2
+    dest: "{{ user_home }}/.config/coc/extensions/package.json"
+
+- name: Download fzf
+  git:
+    repo: https://github.com/junegunn/fzf.vim.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/fzf"
+
+- name: Download surround
+  git:
+    repo: https://tpope.io/vim/surround.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/surround"
+
+- name: Download nerdtree
+  git:
+    repo: https://github.com/preservim/nerdtree.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/nerdtree"
+
+- name: Download fugitive
+  git:
+    repo: https://tpope.io/vim/fugitive.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/fugitive"
+
+- name: Download pairs
+  git:
+    repo: https://github.com/jiangmiao/auto-pairs.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/pairs"
+
+- name: Download commentary
+  git:
+    repo: https://tpope.io/vim/commentary.git
+    dest: "{{ user_home }}/.vim/pack/plugins/start/commentary"
+
+- name: Download prettier
+  git:
+    repo: https://github.com/prettier/vim-prettier
+    dest: "{{ user_home }}/.vim/pack/plugins/start/prettier"

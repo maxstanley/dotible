@@ -37,3 +37,35 @@ set smartcase " Enable Smart Case Search
 
 " Misc
 set wildmenu " Autocomplete in Menu
+
+" coc.nvim
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+
+" Map Tab To auto complete
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" https://www.reddit.com/r/vim/comments/6v368a/how_do_you_install_plugins_on_vim8/
+
+" Load all packages now
+packloadall
+" Generate help tags from all packages and ignore errors
+silent! helptags ALL
+
+nmap <F6> :NERDTreeToggle<CR>
+
+" FZF
+set rtp+=~/.fzf

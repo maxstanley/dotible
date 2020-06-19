@@ -1,8 +1,14 @@
 ---
 - name: Install vim
   become: yes
-  become_user: ansible
   aur:
     use: yay
     name: vim
+    state: present
+
+- name: Install fzf
+  become: yes
+  aur:
+    use: yay
+    name: fzf
     state: present
